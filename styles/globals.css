@@ -28,6 +28,11 @@ a {
   src: url("../public/Burtons.otf");
 }
 
+@font-face {
+  font-family: "poppins";
+  src: url("../public/poppins.ttf");
+}
+
 *{
   box-sizing: border-box;
 }

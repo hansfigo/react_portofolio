@@ -17,6 +17,7 @@ module.exports = {
       },
       fontFamily:{
         burtons:"burtons",
+        poppins:"poppins",
       } 
     },
   },
