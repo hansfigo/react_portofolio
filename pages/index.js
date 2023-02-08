@@ -2,13 +2,19 @@ import Head from 'next/head'
 import { BsFillMoonStarsFill } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsGithub } from 'react-icons/bs';
-import { BsBehance} from 'react-icons/bs';
+import { BsBehance } from 'react-icons/bs';
 import { useState } from 'react';
+import react from 'react';
 
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isChecked, setCheked] = react.useState(true);
+
+  const handleChange = () => {
+    setCheked(!isChecked);
+  }
 
   return (
     <div className={darkMode ? "dark" : " "}>
@@ -16,9 +22,16 @@ export default function Home() {
         <title>Hans Figo Portofolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        
-      </Head>
 
+      </Head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-BTJ9LN8RC0"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)}
+        gtag('js', new Date());
+
+        gtag('config', 'G-BTJ9LN8RC0');
+      </script>
       <main className='bg-white px-10 transition duration-500 ease-in-out dark:bg-darkBlueBG dark:text-gray-200 font-poppins'>
         <section>
           <div className='py-5 px-10 border-b w-full z-20 top-0 left-0 fixed dark:bg-darkBlueBG dark:bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 text-center border-gray-200'>
@@ -26,7 +39,9 @@ export default function Home() {
               <h1 className='text-xl font-semibold font-burtons justify-center'>HNZCLZ</h1>
               <ul className='flex items-center'>
                 <li onClick={() => setDarkMode(!darkMode)} className={!isNavOpen ? 'text-xl cursor-pointer dark:text-blue-500' : ''}>
-                  <BsFillMoonStarsFill />
+                  {/* <BsFillMoonStarsFill /> */}
+                  <CheckBox label={'Test'} onChange={handleChange} value={isChecked}
+                  ></CheckBox>
                 </li>
                 {/* <li>
                   <div className={!isNavOpen ? 'HAMBURGER-ICON lg:hidden space-y-2 ml-8' : 'hidden'} onClick={() => setIsNavOpen((prev) => !prev)}>
@@ -100,7 +115,7 @@ export default function Home() {
             </p>
             <nav className='py-10'>
               <ul className='flex justify-center text-4xl gap-12 text-gray-500 dark:text-gray-400'>
-                <li className='hover:text-blue-500 dark:hover:text-white transition duration-500 ease-in-out'><a href="https://www.linkedin.com/in/claudio-hans-figo-bbb872203/"><BsLinkedin/></a>
+                <li className='hover:text-blue-500 dark:hover:text-white transition duration-500 ease-in-out'><a href="https://www.linkedin.com/in/claudio-hans-figo-bbb872203/"><BsLinkedin /></a>
                 </li>
                 <li className='hover:text-darkBlue dark:hover:text-white transition duration-500 ease-in-out'><a href="https://github.com/hansfigo"><BsGithub /></a></li>
                 <li className='hover:text-blue-500 dark:hover:text-white transition duration-500 ease-in-out'><a href="https://www.behance.net/hans_figo"><BsBehance /></a></li>
@@ -117,16 +132,15 @@ export default function Home() {
             <h2 className='font-bold text-2xl py-2'>Let's be a Friend !!</h2>
             <p className='leading-8 text-gray-500 py-2  dark:text-gray-400'>
               Graduated from <span className='font-bold text-blue-500'>Informatic Engineering</span> of <span className='font-bold text-blue-500'>SMKN 2 Depok</span> Vocational School,
-              Now Studying in <span  className='font-bold text-blue-500'> AMIKOM University</span> of Yogyakarta.
+              Now Studying in <span className='font-bold text-blue-500'> AMIKOM University</span> of Yogyakarta.
               Interested in Software Engineering and Cyber Security.
               Currently studying <span className='font-bold text-blue-500'>Flutter</span> and <span className='font-bold text-blue-500'>Javascript</span>.
             </p>
           </div>
 
-
           <div className='py-10'>
             <h3 className='text-blue-500 font-bold text-xl dark:drop-shadow-md dark:shadow-blue-600'>More Info?</h3>
-             <h2 className='font-bold text-2xl py-2'>Coming Soon !!</h2>
+            <h2 className='font-bold text-2xl py-2'>Coming Soon !!</h2>
             {/* <p className='leading-8 text-gray-500 py-2  dark:text-gray-400'>
               Graduated from <span className='font-bold text-blue-500'>Informatic Engineering</span> of <span className='font-bold text-blue-500'>SMKN 2 Depok</span> Vocational School,
               Now Studying in <span  className='font-bold text-blue-500'> AMIKOM University</span> of Yogyakarta.
@@ -134,10 +148,20 @@ export default function Home() {
               Currently studying <span className='font-bold text-blue-500'>Flutter</span> and <span className='font-bold text-blue-500'>Javascript</span>.
             </p>  */}
           </div>
-          
+
         </section>
 
       </main>
     </div>
   )
 }
+
+
+const CheckBox = ({ label, value, onChange }) => {
+  return (
+    <label>
+      <input type="checkbox" checked={value} onChange={onChange}>
+      </input>
+    </label>
+  );
+};
